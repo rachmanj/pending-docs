@@ -48,7 +48,8 @@
   <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/fh-3.1.9/datatables.min.css"/>
+  {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/fh-3.1.9/datatables.min.css"/> --}}
+  <link rel="stylesheet" type="text/css" href="{{ asset('adminlte/plugins/datatables/css/datatables.min.css') }}"/>
 @endsection
 
 @section('scripts')
@@ -65,7 +66,8 @@
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/fh-3.1.9/datatables.min.js"></script>
+{{-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/fh-3.1.9/datatables.min.js"></script> --}}
+<script type="text/javascript" src="{{ asset('adminlte/plugins/datatables/datatables.min.js') }}"></script>
 
 <script>
   $(function () {
