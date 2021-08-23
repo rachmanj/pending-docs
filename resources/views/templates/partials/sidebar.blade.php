@@ -57,7 +57,7 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item menu-open">
+        <li class="nav-item {{ request()->is('outsdocs/011') || request()->is('outsdocs/011/*') ? 'menu-open' : '' }}">
           <a href="#" class="nav-link active">
             <i class="nav-icon fas fa-folder"></i>
             <p>
@@ -73,14 +73,14 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('outsdocs011.index') }}" class="nav-link active">
+              <a href="{{ route('outsdocs011.index') }}" class="nav-link {{ request()->is('outsdocs/011') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Documents</p>
               </a>
             </li>
           </ul>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {{ request()->is('outsdocs/017') || request()->is('outsdocs/017/*') ? 'menu-open' : '' }}">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-folder"></i>
             <p>
@@ -96,7 +96,30 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('outsdocs011.index') }}" class="nav-link">
+              <a href="{{ route('outsdocs017.index') }}" class="nav-link {{ request()->is('outsdocs/017') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Documents</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item {{ request()->is('outsdocs/APS') || request()->is('outsdocs/APS/*') ? 'menu-open' : '' }}">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-folder"></i>
+            <p>
+              Project APS
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Dashboard</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('outsdocsAPS.index') }}" class="nav-link {{ request()->is('outsdocs/APS') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Documents</p>
               </a>
@@ -119,7 +142,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('outsdocs011.index') }}" class="nav-link">
+              <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Documents</p>
               </a>

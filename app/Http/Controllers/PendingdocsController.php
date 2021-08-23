@@ -14,4 +14,14 @@ class PendingdocsController extends Controller
         return view('outsdocs.011C.index');
     }
 
+    public function outsdocs017()
+    {
+        return view('outsdocs.017C.index');
+    }
+
+    public function outsdocsAPS()
+    {
+        return view('outsdocs.APS.index');
+    }
+
 }

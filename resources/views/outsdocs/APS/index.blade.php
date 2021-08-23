@@ -5,7 +5,7 @@
 @endsection
 
 @section('breadcrumb_title')
-    011C
+    APS
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
 
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Project: 011C</h3>
+        <h3 class="card-title">Project: APS</h3>
       </div>
       <!-- /.card-header -->
       <div class="card-body">
@@ -72,7 +72,7 @@
     $("#example1").DataTable({
       processing: true,
       serverSide: true,
-      ajax: '{{ route('index011.data') }}',
+      ajax: '{{ route('indexAPS.data') }}',
       columns: [
         {data: 'DT_RowIndex', orderable: false, searchable: false},
         {data: 'docnum'},
