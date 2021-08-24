@@ -11,21 +11,21 @@ class Addoc extends Model
 
     protected $table = 'irr5_addoc';
     protected $primaryKey = 'addoc_id';
-    protected $with = ['invoice', 'doctype'];
+    protected $with = ['invoice', 'addoctype'];
     protected $guarded = [];
 
-    public function doctype()
+    public function addoctype()
     {
         return $this->belongsTo(Doctype::class, 'doctype', 'doctype_id');
-    }
-
-    public function invoice()
-    {
-        return $this->belongsTo(Invoice::class, 'inv_id', 'inv_id');
     }
 
     // public function invoice()
     // {
     //     return $this->belongsTo(Invoice::class, 'inv_id', 'inv_id');
     // }
+
+    public function invoice()
+    {
+        return $this->belongsTo(Invoice::class, 'inv_id', 'inv_id');
+    }
 }

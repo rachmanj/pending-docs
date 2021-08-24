@@ -16,7 +16,7 @@ class Invoice extends Model
 
     public function addocs()
     {
-        return $this->hasMany(Addoc::class, 'inv_id', 'addoc_id');
+        return $this->hasMany(Addoc::class, 'inv_id', 'inv_id');
     }
 
     public function project()

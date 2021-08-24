@@ -14,7 +14,7 @@ class AddUpdatedColumnToIrr5AddocTable extends Migration
     public function up()
     {
         Schema::table('irr5_addoc', function (Blueprint $table) {
-            $table->timestamp('updated_at')->nullable();
+            $table->timestamps();
         });
     }
 

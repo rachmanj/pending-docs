@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Addoc;
+use App\Models\Invoice;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -53,6 +55,47 @@ class DataController extends Controller
             ->toJson();
     }
 
+    public function accountingIndex()
+    {
+        $outsdocs = $this->outsdocs();
+
+        return datatables()->of($outsdocs)
+            ->editColumn('inv_date', function ($outsdocs) {
+                return date('d-M-Y', strtotime($outsdocs->inv_date));
+            })
+            ->addIndexColumn()
+            ->addColumn('action', 'accounting.action')
+            ->rawColumns(['action'])
+            ->toJson();
+    }
+
+    public function accountingInvoices()
+    {
+        $date = Carbon::now();
+
+        $invoices = Invoice::whereYear('receive_date', $date)
+                    ->where('receive_place', 'BPN')
+                    ->whereNull('mailroom_bpn_date')
+                    ->where('inv_status', '!=', 'RETURN')
+                    ->limit(40)
+                    ->get();
+        
+        return datatables()->of($invoices)
+            ->addColumn('project', function ($invoices) {
+                return $invoices->project->project_code;
+            })
+            ->addColumn('vendor', function ($invoices) {
+                return $invoices->vendor->vendor_name;
+            })
+            ->addColumn('amount', function ($invoices) {
+                return number_format($invoices->inv_nominal, 0);
+            })
+            ->addIndexColumn()
+            ->addColumn('action', 'accounting.invoice_action')
+            ->rawColumns(['action'])
+            ->toJson();
+    }
+
     public function outsdocs()
     {
         $date = Carbon::now();
@@ -76,9 +119,27 @@ class DataController extends Controller
                 ->whereYear('inv_date', $date)
                 // ->orderBy('doctype', 'asc')
                 ->orderBy('days', 'desc')
+                ->orderBy('project', 'asc')
                 ->get();
                 
  
                 return $list;
+    }
+
+    public function addocsByInvoice($inv_id)
+    {
+        $addocs = Addoc::without('invoice')->where('inv_id', $inv_id)->get();
+
+        return datatables()->of($addocs)
+            ->editColumn('doctype', function ($addocs) {
+                return $addocs->addoctype->docdesc;
+            })
+            ->editColumn('docreceive', function ($addocs) {
+                return date('d-M-Y', strtotime($addocs->docreceive));
+            })
+            ->addIndexColumn()
+            ->addColumn('action', 'accounting.invoice_addoc_action')
+            ->rawColumns(['action'])
+            ->toJson();
     }
 }

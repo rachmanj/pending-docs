@@ -14,4 +14,5 @@ class InvoiceController extends Controller
 
         return view('invoices.show', compact('invoice'));
     }
+
 }
