@@ -77,7 +77,7 @@ class DataController extends Controller
                     ->where('receive_place', 'BPN')
                     ->whereNull('mailroom_bpn_date')
                     ->where('inv_status', '!=', 'RETURN')
-                    ->limit(40)
+                    // ->limit(40)
                     ->get();
         
         return datatables()->of($invoices)
