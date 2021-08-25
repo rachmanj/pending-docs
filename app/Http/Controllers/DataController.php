@@ -135,7 +135,10 @@ class DataController extends Controller
                 return $addocs->addoctype->docdesc;
             })
             ->editColumn('docreceive', function ($addocs) {
-                return date('d-M-Y', strtotime($addocs->docreceive));
+                if($addocs->docreceive) {
+                    return date('d-M-Y', strtotime($addocs->docreceive));
+                }
+                return null;
             })
             ->addIndexColumn()
             ->addColumn('action', 'accounting.invoice_addoc_action')
