@@ -55,6 +55,36 @@ class DataController extends Controller
             ->toJson();
     }
 
+    public function index000H()
+    {
+        $project = '000H';
+        $outsdocs = $this->outsdocs()->where('project', $project);
+
+        return datatables()->of($outsdocs)
+            ->editColumn('inv_date', function ($outsdocs) {
+                return date('d-M-Y', strtotime($outsdocs->inv_date));
+            })
+            ->addIndexColumn()
+            ->addColumn('action', 'outsdocs.APS.action')
+            ->rawColumns(['action'])
+            ->toJson();
+    }
+
+    public function index001H()
+    {
+        $project = '001H';
+        $outsdocs = $this->outsdocs()->where('project', $project);
+
+        return datatables()->of($outsdocs)
+            ->editColumn('inv_date', function ($outsdocs) {
+                return date('d-M-Y', strtotime($outsdocs->inv_date));
+            })
+            ->addIndexColumn()
+            ->addColumn('action', 'outsdocs.APS.action')
+            ->rawColumns(['action'])
+            ->toJson();
+    }
+
     public function accountingIndex()
     {
         $outsdocs = $this->outsdocs();

@@ -24,5 +24,4 @@ class PendingdocsController extends Controller
         return view('outsdocs.APS.index');
     }
 
-
 }

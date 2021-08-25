@@ -15,6 +15,16 @@ class AccountingController extends Controller
         return view('accounting.index');
     }
 
+    public function outsdocs000H()
+    {
+        return view('accounting.000H.index');
+    }
+
+    public function outsdocs001H()
+    {
+        return view('accounting.001H.index');
+    }
+
     public function edit_addoc($id)
     {
         $addoc = Addoc::find($id);

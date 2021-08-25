@@ -5,7 +5,7 @@
 @endsection
 
 @section('breadcrumb_title')
-    All Projects
+    project: 000H
 @endsection
 
 @section('content')
@@ -19,11 +19,13 @@
             {{ Session::get('status') }}
           </div>
         @endif
+
         <div class="card-title">
-          <a href=""><b>All Projects</b></a> |
-          <a href="{{ route('accounting.outdocs_000H') }}">000H</a> |
+          <a href="{{ route('accounting.outdocs_index') }}">All Projects</a> |
+          <a href="#"><b>000H</b></a> |
           <a href="{{ route('accounting.outdocs_001H') }}">001H</a>
         </div>
+        
       </div>
       <!-- /.card-header -->
       <div class="card-body">
@@ -81,7 +83,7 @@
     $("#example1").DataTable({
       processing: true,
       serverSide: true,
-      ajax: '{{ route('accountingIndex.data') }}',
+      ajax: '{{ route('accounting000H.data') }}',
       columns: [
         {data: 'DT_RowIndex', orderable: false, searchable: false},
         {data: 'docnum'},
